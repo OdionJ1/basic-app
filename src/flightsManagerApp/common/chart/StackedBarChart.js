@@ -24,40 +24,25 @@ const StackedBarChart = ({ rotationList }) => {
                 color: 'grey'
             }])
         } else {
-            if(rotationList.length === 1){
+            const sortedRotationList = rotationList.sort((a, b) => a.departuretime - b.departuretime)
 
-                let rotation = rotationList[0]
-                
-                let diff = rotation.departuretime - 0
-                addToArr('turn around', diff)
-                
-                let diff2 = rotation.arrivaltime - rotation.departuretime
-                addToArr('scheduled', diff2)
-                
-                let diff3 = 86400 - rotation.arrivaltime
-                addToArr('Idle', diff3)
+            for(let i = 0; i < sortedRotationList.length; i++){
+                let rotation = sortedRotationList[i]
+                if(i === 0){
+                    let timeDiff = rotation.departuretime - 0
+                    addToArr('Idle', timeDiff)
+                }
 
-            } else {
-                const sortedRotationList = rotationList.sort((a, b) => a.departuretime - b.departuretime)
+                let timeDiff = rotation.arrivaltime - rotation.departuretime
+                addToArr('scheduled', timeDiff)
 
-                for(let i = 0; i < sortedRotationList.length; i++){
-                    let rotation = sortedRotationList[i]
-                    if(i === 0){
-                        let diff = rotation.departuretime - 0
-                        addToArr('turn around', diff)
-                    }
-    
-                    let diff = rotation.arrivaltime - rotation.departuretime
-                    addToArr('scheduled', diff)
-    
-                    if(i === sortedRotationList.length - 1){
-                        let diff2 = 86400 - rotation.arrivaltime
-                        addToArr('Idle', diff2)
-                    } else {
-                        let nextItemIndex = i + 1
-                        let diff3 = sortedRotationList[nextItemIndex].departuretime - rotation.arrivaltime
-                        addToArr('turn around', diff3)
-                    }
+                if(i === sortedRotationList.length - 1){
+                    let timeDiff2 = 86400 - rotation.arrivaltime
+                    addToArr('Idle', timeDiff2)
+                } else {
+                    let nextItemIndex = i + 1
+                    let timeDiff3 = sortedRotationList[nextItemIndex].departuretime - rotation.arrivaltime
+                    addToArr('turn around', timeDiff3)
                 }
             }
 
@@ -66,6 +51,7 @@ const StackedBarChart = ({ rotationList }) => {
                 let chartTextName;
                 let chartColor;
                 let chartValue = calculateProportion(listItem.value);
+                let chartDesc = convertToReadableTime(chartValue);
     
                 switch(listItem.service){
                     case 'Idle':
@@ -85,8 +71,8 @@ const StackedBarChart = ({ rotationList }) => {
                 
                 arr.push({
                     name: `${chartTextName} time`,
-                    value: Number(chartValue),
-                    description: `${chartValue}hrs`,
+                    value: chartValue,
+                    description: chartDesc,
                     color: chartColor
                 })
             })
@@ -97,9 +83,26 @@ const StackedBarChart = ({ rotationList }) => {
     }, [rotationList])
 
     let calculateProportion = (num) => {
-        return (num/60/60).toFixed(1)
+        return num/60/60
     }
-    
+
+    let convertToReadableTime = (num) => {
+        let numStr = num.toString()
+        let intNum = numStr
+        let mins;
+
+        if(numStr.includes('.')){
+            let numArr = numStr.split('.')
+            intNum = numArr[0]
+            mins = Math.round(`.${numArr[1]}` * 60)
+        }
+
+        let hrs = intNum > 0? `${intNum}hr${intNum > 1? 's' : ''}` : ''
+        let minutes = mins? `${hrs? ':' : ''}${mins}mins` : ''
+
+        return `${hrs}${minutes}`
+    }
+
     return (
         <HSBar
         height={40}

@@ -71,16 +71,20 @@ const FlightManager = () => {
 
 
     //Rotation related:
-    let addRotation = (id) => {
+    let addToRotation = (id) => {
         let flight = flightList.find((flight) => flight.id === id)
-        let conflict = conflictCheck(flight)//Check for time conflict in accordance with the rules of the airline
 
+        if(hasConflict.includes(flight.id)){
+            return;
+        }
+
+        let conflict = conflictCheck(flight)//Check for time conflict in accordance with the rules of the airline
         if(conflict){
             setHasConflict([...hasConflict, flight.id])
             return;
         }
         
-        //Add flight to rotation list if there's no time conflict
+        //Add flight to rotation list as there's no time conflict
         setRotationList([...rotationList, flight])
 
         //Remove flight from flight list
@@ -89,7 +93,7 @@ const FlightManager = () => {
         setHasConflict([])
     }
 
-    let removeRotation = (id) => {
+    let removeFromRotation = (id) => {
         //Return flight to flight list
         let flight = rotationList.find((flight) => flight.id === id)
         setFlightList([...flightList, flight])
@@ -107,7 +111,7 @@ const FlightManager = () => {
         }
 
         for (let rotation of rotationList){
-            let time1 = rotation.departuretime - 1200 
+            let time1 = rotation.departuretime - 1200 //total number of seconds in 20 mins is 1200
             let time2 = rotation.arrivaltime + 1200
 
             if((flight.departuretime < time1 && flight.arrivaltime >= time1) || (flight.departuretime >= time1 && flight.departuretime <= time2)){
@@ -146,7 +150,7 @@ const FlightManager = () => {
                     {
                         selectedAircraft?
                         <ListContainer>
-                            {rotationList.sort((a, b) => a.departuretime - b.departuretime).map(flight => <Rotation removeFromRotation={() => removeRotation(flight.id)} key={flight.id} flight={flight} />)}
+                            {rotationList.sort((a, b) => a.departuretime - b.departuretime).map(flight => <Rotation removeFromRotation={() => removeFromRotation(flight.id)} key={flight.id} flight={flight} />)}
                         </ListContainer>
                         :
                         <p className='text-guide'>*Select aircraft to add Rotation</p>
@@ -157,7 +161,7 @@ const FlightManager = () => {
                     Flights
                     <p style={{display: selectedDate? 'none' : 'block'}} className='text-guide'>*Select date to see flights</p>
                     <ListContainer>
-                        {flightList.sort((a, b) => a.departuretime - b.departuretime).map(flight => <Flight rotationList={rotationList} hasConflict={hasConflict} disabled={!selectedAircraft} addToRotation={() => addRotation(flight.id)} key={flight.id} flight={flight} />)}
+                        {flightList.sort((a, b) => a.departuretime - b.departuretime).map(flight => <Flight rotationList={rotationList} hasConflict={hasConflict} disabled={!selectedAircraft} addToRotation={() => addToRotation(flight.id)} key={flight.id} flight={flight} />)}
                     </ListContainer>
                 </div>
             </main>
