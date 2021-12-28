@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+Running the Application from scratch (Prerequisites: Git, Node):
+Click on this link (https://github.com/OdionJ1/basic-app).
+When the page opens, click on the green button in the center right of the page. This will open a small model. Copy the link on the modal.
+Create a new folder anywhere in your local environment. Right click on the new folder. On the menu that opens, click 'Git Bash Here'.
+In the git terminal type 'git clone' then paste the link gotten from the modal, press enter.
+After clone has been completed, in the terminal, type 'cd basic-app' to get into the basic app folder, then press enter. Then type 'npm i' to download node modules.
+After node modules has been downloaded, type 'npm start' then press enter. This will run the application on the browser
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Running the Application (Follow this process if application is already on your local environment):
+Right click on the application folder. On the menu that opens, click 'Git Bash Here'. In the git terminal type 'npm start' then press enter
+This will run the application on the browser
 
-In the project directory, you can run:
 
-### `npm start`
+Application Usage:
+When the application runs on the browser, user may have to wait for a few seconds for the application data to load.
+User must select a Date to be able to see planned flights
+User must select an Aircraft to be able to add flights to rotation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+*Click the plus button on a flight to add to rotation
+*Click the times button on a rotation to remove it
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Adding flights to rotation enforces the following rules:
+    - All aircrafts must be on the ground at midnight
+    - The turnaround time (minimum time between the end of a flight and the beginning of the next one) is always 20min for this airline.
