@@ -1,6 +1,6 @@
 Running the Application from scratch (Prerequisites: Git, Node):
 Click on this link (https://github.com/OdionJ1/basic-app).
-When the page opens, click on the green button in the center right of the page. This will open a small model. Copy the link on the modal.
+When the page opens, click on the green button in the center right of the page. This will open a small modal. Copy the link on the modal.
 Create a new folder anywhere in your local environment. Right click on the new folder. On the menu that opens, click 'Git Bash Here'.
 In the git terminal type 'git clone' then paste the link gotten from the modal, press enter.
 After clone has been completed, in the terminal, type 'cd basic-app' to get into the basic app folder, then press enter. Then type 'npm i' to download node modules.
