@@ -1,0 +1,35 @@
+.loader {
+    z-index: 1000;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .loader-text {
+        margin: 0;
+        font-size: 1.5rem;
+        position: relative;
+        top: 40%;
+    
+        .dot::before{
+            animation: dots 0.5s linear infinite;
+            content: '';
+        }
+          @keyframes dots{
+            0%, 20%{
+              content: '.'
+              }
+            40%{
+              content: '..'
+              }
+            60%{
+              content: '...'
+            }
+            90%, 100%{
+              content: ''
+            }
+        }
+    }
+}

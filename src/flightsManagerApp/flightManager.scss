@@ -1,0 +1,73 @@
+.flightManager {
+    height: 39rem;
+    padding: 3rem 0 7rem 0;
+
+    .header {
+        margin: 0;
+        margin-top: -1rem;
+        margin-bottom: 1rem;
+        text-align: center;
+        font-size: 1.5rem;
+    }
+
+    .date-selector {
+        margin-bottom: 1rem;
+        text-align: center;
+
+        .text-guide {
+            color: red;
+            font-size: 0.7rem;
+            margin: 1px 0; 
+        }
+    }
+
+    .main {
+        display: flex;
+        justify-content: space-between;
+        height: 90%;
+        
+    
+        .aircraft-section {
+            width: 25%;
+            text-align: center;
+        }
+    
+        .flight-section {
+            width: 25%;
+            text-align: center;
+
+            .text-guide {
+                color: red;
+                font-size: 0.7rem;
+                margin: 1px 0; 
+            }
+        }
+    
+        .rotation-section {
+            width: 40%;
+            text-align: center;
+
+            .text-guide{
+                color: red;
+                font-size: 0.7rem;
+                margin: 1px 0;
+            }
+        }
+    }
+
+    .chart {
+        width: 80%;
+        margin: 0.5rem auto;
+
+        .chart-label{
+            display: flex;
+            justify-content: space-between;
+
+            .label-text{
+                margin: 0;
+                font-size: small;
+            }
+        }
+
+    }
+}

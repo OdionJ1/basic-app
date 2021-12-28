@@ -1,0 +1,40 @@
+.rotation-container{
+    margin-bottom: 0.7rem;
+    width: 93%;
+    height: 25%;
+    padding: 1rem;
+    border: 1px solid #333333;
+
+    .rotation {
+        height: 100%;
+        border: 1px solid #333333;
+        color: white;
+        background-color: #a37d7d;
+
+        .flightInfo {
+            margin-top: 0.5rem;
+    
+            .info {
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+    }
+
+    button {
+        border: 0;
+        background-color: transparent;
+        cursor: pointer;
+        border: 3px solid #333333;
+        border-radius: 1px;
+        padding: 1px;
+
+        i {
+            color: #f05a5a;
+        }
+
+        &:active {
+            border: 1px solid whitesmoke;
+        }
+    }
+}

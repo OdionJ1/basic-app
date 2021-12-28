@@ -1,0 +1,46 @@
+.flight-container {
+    margin-bottom: 0.7rem;
+    width: 87%;
+    height: 20%;
+    padding: 1rem;
+    border: 1px solid #333333;
+
+
+    .flight {
+        height: 100%;
+        border: 1px solid #333333;
+        color: white;
+        background-color: #991c1c;
+
+        .flightInfo {
+            margin-top: 0.5rem;
+    
+            .info {
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+    }
+
+    button{
+        border: 0;
+        background-color: transparent;
+
+        &:active {
+            border: 1px solid whitesmoke;
+        }
+
+        &:disabled {
+            border: 0;
+        }
+    }
+
+    .conflict-text {
+        margin: 0;
+        margin-top: -1rem;
+        font-size: 0.7rem;
+        color: rgb(247, 6, 6);
+        width: 10rem;
+    }
+
+}
