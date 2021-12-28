@@ -13,7 +13,7 @@ This will run the application on the browser
 
 
 Application Usage:
-When the application runs on the browser, user may have to wait for a few seconds for the application data to load.
+When the application runs on the browser, user may have to wait for a few seconds for the application data to get loaded up.
 User must select a Date to be able to see planned flights
 User must select an Aircraft to be able to add flights to rotation
 
