@@ -21,14 +21,14 @@ const FlightManager = () => {
     const [selectedAircraft, setSelectedAircraft] = useState()
     const [selectedDate, setSelectedDate] = useState()
     const [hasConflict, setHasConflict] = useState([])//takes an array of id
-    const [loader, setLoader] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     useEffect( () => {
         let apiCall = async () => {
-            setLoader(true)
+            setLoading(true)
             const aircraftListResponse = await getAircraftList()
             setAircraftList(addSelectedProperty(aircraftListResponse.data))
-            setLoader(false)
+            setLoading(false)
         }
         apiCall()
 
@@ -39,10 +39,10 @@ const FlightManager = () => {
         let { value } = event.target
         setSelectedDate(value)
 
-        setLoader(true)
+        setLoading(true)
         const flightListResponse = await getFlightList()
         setFlightList(flightListResponse.data)
-        setLoader(false)
+        setLoading(false)
     }
     //
 
@@ -125,7 +125,7 @@ const FlightManager = () => {
 
     return (
         <div className='flightManager'>
-            <Loader show={loader}/>
+            <Loader show={loading}/>
             <h2 className='header'>Flight Manager</h2>
             <div className='date-selector'>
                 <label>Select date: </label>
