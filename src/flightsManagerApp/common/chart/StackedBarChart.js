@@ -30,19 +30,19 @@ const StackedBarChart = ({ rotationList }) => {
                 let rotation = sortedRotationList[i]
                 if(i === 0){
                     let timeDiff = rotation.departuretime - 0
-                    addToArr('Idle', timeDiff)
+                    addToArr('Idle time', timeDiff)
                 }
 
                 let timeDiff = rotation.arrivaltime - rotation.departuretime
-                addToArr('scheduled', timeDiff)
+                addToArr('scheduled service', timeDiff)
 
                 if(i === sortedRotationList.length - 1){
                     let timeDiff2 = 86400 - rotation.arrivaltime
-                    addToArr('Idle', timeDiff2)
+                    addToArr('Idle time', timeDiff2)
                 } else {
                     let nextItemIndex = i + 1
                     let timeDiff3 = sortedRotationList[nextItemIndex].departuretime - rotation.arrivaltime
-                    addToArr('turn around', timeDiff3)
+                    addToArr('turn around time', timeDiff3)
                 }
             }
 
@@ -54,15 +54,15 @@ const StackedBarChart = ({ rotationList }) => {
                 let chartDesc = convertToReadableTime(chartValue);
     
                 switch(listItem.service){
-                    case 'Idle':
+                    case 'Idle time':
                         chartTextName = listItem.service
                         chartColor = 'grey'
                         break; 
-                    case 'turn around':
+                    case 'turn around time':
                         chartTextName = listItem.service
                         chartColor = '#794179'
                         break; 
-                    case 'scheduled':
+                    case 'scheduled service':
                         chartTextName = listItem.service
                         chartColor = '#316e31'
                         break;
@@ -70,7 +70,7 @@ const StackedBarChart = ({ rotationList }) => {
                 }
                 
                 arr.push({
-                    name: `${chartTextName} time`,
+                    name: chartTextName,
                     value: chartValue,
                     description: chartDesc,
                     color: chartColor

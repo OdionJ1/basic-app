@@ -171,7 +171,7 @@ const FlightManager = () => {
                     <div className='chart-label'>
                         <p className='label-text'>00:00</p>
                         <p className='label-text'>12:00</p>
-                        <p className='label-text'>24:00</p>
+                        <p className='label-text'>00:00</p>
                     </div>
                     <hr />
                     <StackedBarChart rotationList={rotationList} />
