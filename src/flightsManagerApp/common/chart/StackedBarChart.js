@@ -48,7 +48,7 @@ const StackedBarChart = ({ rotationList }) => {
             listForChart.forEach(listItem => {
                 let chartTextName;
                 let chartColor;
-                let chartValue = calculateProportion(listItem.value);
+                let chartValue = convertToHours(listItem.value);
                 let chartDesc = convertToReadableTime(chartValue);
     
                 switch(listItem.service){
@@ -80,7 +80,7 @@ const StackedBarChart = ({ rotationList }) => {
 
     }, [rotationList])
 
-    let calculateProportion = (num) => {
+    let convertToHours = (num) => {
         return num/60/60
     }
 
