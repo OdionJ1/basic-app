@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import HSBar from "react-horizontal-stacked-bar-chart";
 
-import './stackedBarChart.scss'
-
 const StackedBarChart = ({ rotationList }) => {
     let [chartData, setChartData] = useState([])
 
